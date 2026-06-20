@@ -426,6 +426,10 @@ def _call_gemini(prompt: str, max_tokens: int = 1024) -> str:
         config=genai_types.GenerateContentConfig(
             temperature=0.3,
             max_output_tokens=max_tokens,
+            # Disable "thinking" so the full token budget goes to the actual
+            # response. Gemini 2.5 models otherwise spend tokens on internal
+            # reasoning, which can truncate the JSON output mid-string.
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
         ),
     )
     return response.text

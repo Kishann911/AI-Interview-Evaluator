@@ -336,54 +336,22 @@ def _render_interview_card(iv: dict):
 
     st.markdown(
         f"""
-        <div style="
-            background:white; border:1px solid #e2e8f0;
-            border-radius:14px; padding:1.2rem 1.5rem;
-            box-shadow:0 1px 6px rgba(0,0,0,0.06); margin-bottom:0.7rem;
-            border-left:5px solid {g_color};
-        ">
-            <div style="display:flex; justify-content:space-between;
-                        align-items:flex-start; flex-wrap:wrap; gap:0.8rem;">
-
-                <!-- Left column -->
-                <div style="flex:1; min-width:240px;">
-                    <div style="display:flex; align-items:center; gap:0.5rem;
-                                flex-wrap:wrap; margin-bottom:0.4rem;">
-                        <span style="font-size:1.05rem; font-weight:700; color:#0f172a;">
-                            {d_icon}  {domain}
-                        </span>
-                        <span style="background:{d_color}; color:white; padding:2px 10px;
-                              border-radius:12px; font-size:0.77rem; font-weight:700;">
-                            {difficulty}
-                        </span>
-                        <span style="background:#f1f5f9; color:#475569; padding:2px 9px;
-                              border-radius:12px; font-size:0.76rem;">
-                            {total_q} questions
-                        </span>
-                    </div>
-                    <div style="font-size:0.82rem; color:#64748b; margin-bottom:0.4rem;">
-                        🗓️ {date_str}  ·  ⏱️ {duration}
-                    </div>
-                    <div style="font-size:0.85rem; color:#475569; font-style:italic;
-                                max-width:480px;">
-                        {verdict_short}
-                    </div>
-                </div>
-
-                <!-- Right column: score -->
-                <div style="text-align:center; min-width:100px;">
-                    <div style="font-size:2.2rem; font-weight:900; color:{p_color};
-                                line-height:1;">
-                        {pct:.0f}<span style="font-size:1rem; color:#94a3b8;">%</span>
-                    </div>
-                    <div style="margin-top:0.3rem;">
-                        <span style="background:{g_color}; color:white; padding:3px 14px;
-                              border-radius:16px; font-size:0.9rem; font-weight:800;">
-                            {grade}
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:14px;padding:1.2rem 1.5rem;box-shadow:0 1px 6px rgba(0,0,0,0.06);margin-bottom:0.7rem;border-left:5px solid {g_color};">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.8rem;">
+        <div style="flex:1;min-width:240px;">
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.4rem;">
+        <span style="font-size:1.05rem;font-weight:700;color:#0f172a;">{d_icon}  {domain}</span>
+        <span style="background:{d_color};color:white;padding:2px 10px;border-radius:12px;font-size:0.77rem;font-weight:700;">{difficulty}</span>
+        <span style="background:#f1f5f9;color:#475569;padding:2px 9px;border-radius:12px;font-size:0.76rem;">{total_q} questions</span>
+        </div>
+        <div style="font-size:0.82rem;color:#64748b;margin-bottom:0.4rem;">🗓️ {date_str}  ·  ⏱️ {duration}</div>
+        <div style="font-size:0.85rem;color:#475569;font-style:italic;max-width:480px;">{verdict_short}</div>
+        </div>
+        <div style="text-align:center;min-width:100px;">
+        <div style="font-size:2.2rem;font-weight:900;color:{p_color};line-height:1;">{pct:.0f}<span style="font-size:1rem;color:#94a3b8;">%</span></div>
+        <div style="margin-top:0.3rem;"><span style="background:{g_color};color:white;padding:3px 14px;border-radius:16px;font-size:0.9rem;font-weight:800;">{grade}</span></div>
+        </div>
+        </div>
         </div>
         """,
         unsafe_allow_html=True,

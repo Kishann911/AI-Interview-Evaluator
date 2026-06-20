@@ -9,9 +9,9 @@ gatherUsageStats = false
 
 [theme]
 primaryColor = "#6C63FF"
-backgroundColor = "#0E1117"
-secondaryBackgroundColor = "#1A1F2E"
-textColor = "#FAFAFA"
+backgroundColor = "#f4f6fb"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#1e293b"
 font = "sans serif"
 
 [logger]

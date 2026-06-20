@@ -173,58 +173,24 @@ def _render_hero(interview: dict, username: str, responses: list):
 
     st.markdown(
         f"""
-        <div style="
-            background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#1d4ed8 100%);
-            border-radius:20px; padding:2rem 2.5rem; color:white; margin-bottom:0.5rem;">
-
-            <div style="display:flex; justify-content:space-between;
-                        align-items:center; flex-wrap:wrap; gap:1.5rem;">
-
-                <!-- Left: info -->
-                <div style="flex:1; min-width:260px;">
-                    <div style="font-size:0.8rem; opacity:0.6; font-weight:600;
-                         text-transform:uppercase; letter-spacing:1px;">
-                        Interview Results
-                    </div>
-                    <div style="font-size:2rem; font-weight:800; margin:0.4rem 0 0.2rem;">
-                        {DOMAIN_ICONS.get(domain,'📝')}  {domain}
-                    </div>
-                    <div style="display:flex; align-items:center; gap:0.6rem;
-                         flex-wrap:wrap; margin-bottom:0.8rem;">
-                        <span style="background:{diff_color};padding:3px 12px;
-                              border-radius:20px;font-size:0.82rem;font-weight:700;">
-                            {difficulty}
-                        </span>
-                        <span style="opacity:0.75; font-size:0.88rem;">
-                            {total_q} questions
-                        </span>
-                        <span style="opacity:0.55; font-size:0.82rem;">{date_str}</span>
-                    </div>
-                    <div style="font-size:0.9rem; opacity:0.8; font-style:italic;
-                         max-width:420px; line-height:1.5;">
-                        "{verdict}"
-                    </div>
-                    <div style="margin-top:0.8rem; font-size:0.82rem; opacity:0.55;">
-                        👤 {username}
-                    </div>
-                </div>
-
-                <!-- Right: ring + grade -->
-                <div style="text-align:center; min-width:180px;">
-                    {ring_svg}
-                    <div style="margin-top:0.4rem;">
-                        <span style="
-                            background:{grade_color};
-                            color:white; font-size:1.6rem; font-weight:900;
-                            padding:6px 24px; border-radius:30px;
-                            box-shadow:0 4px 14px rgba(0,0,0,0.3);
-                            display:inline-block;">
-                            {grade}
-                        </span>
-                    </div>
-                </div>
-
-            </div>
+        <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#1d4ed8 100%);border-radius:20px;padding:2rem 2.5rem;color:white;margin-bottom:0.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+        <div style="flex:1;min-width:260px;">
+        <div style="font-size:0.8rem;opacity:0.6;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Interview Results</div>
+        <div style="font-size:2rem;font-weight:800;margin:0.4rem 0 0.2rem;">{DOMAIN_ICONS.get(domain,'📝')}  {domain}</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+        <span style="background:{diff_color};padding:3px 12px;border-radius:20px;font-size:0.82rem;font-weight:700;">{difficulty}</span>
+        <span style="opacity:0.75;font-size:0.88rem;">{total_q} questions</span>
+        <span style="opacity:0.55;font-size:0.82rem;">{date_str}</span>
+        </div>
+        <div style="font-size:0.9rem;opacity:0.8;font-style:italic;max-width:420px;line-height:1.5;">"{verdict}"</div>
+        <div style="margin-top:0.8rem;font-size:0.82rem;opacity:0.55;">👤 {username}</div>
+        </div>
+        <div style="text-align:center;min-width:180px;">
+        {ring_svg}
+        <div style="margin-top:0.4rem;"><span style="background:{grade_color};color:white;font-size:1.6rem;font-weight:900;padding:6px 24px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,0.3);display:inline-block;">{grade}</span></div>
+        </div>
+        </div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -605,39 +571,29 @@ def _render_ai_summary(interview: dict, responses: list, domain: str):
         ("🎯", "Priority Improvements"),
     ]
 
-    st.markdown(
-        """
-        <div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);
-             border-radius:16px;padding:1.8rem 2rem;margin-bottom:0.5rem;">
-            <div style="color:#e2e8f0;font-size:1rem;font-weight:700;
-                 margin-bottom:1.2rem;opacity:0.9;">
-                AI-Generated Personalised Feedback
-            </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
+    para_html = ""
     for i, para in enumerate(paragraphs[:3]):
-        icon, hdr = para_headers[i] if i < len(para_headers) else ("📌", "Feedback")
-        st.markdown(
-            f"""
-            <div style="background:rgba(255,255,255,0.05);border-radius:10px;
-                 padding:1rem 1.2rem;margin-bottom:0.8rem;
-                 border-left:4px solid {'#3b82f6' if i==0 else '#10b981' if i==1 else '#f59e0b'};">
-                <div style="font-size:0.8rem;font-weight:700;
-                     color:{'#93c5fd' if i==0 else '#6ee7b7' if i==1 else '#fcd34d'};
-                     text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.4rem;">
-                    {icon}  {hdr}
-                </div>
-                <div style="color:#cbd5e1;font-size:0.9rem;line-height:1.75;">
-                    {para}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        icon, hdr  = para_headers[i] if i < len(para_headers) else ("📌", "Feedback")
+        border_c   = "#3b82f6" if i == 0 else "#10b981" if i == 1 else "#f59e0b"
+        text_c     = "#93c5fd" if i == 0 else "#6ee7b7" if i == 1 else "#fcd34d"
+        para_html += (
+            f'<div style="background:rgba(255,255,255,0.05);border-radius:10px;'
+            f'padding:1rem 1.2rem;margin-bottom:0.8rem;border-left:4px solid {border_c};">'
+            f'<div style="font-size:0.8rem;font-weight:700;color:{text_c};'
+            f'text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.4rem;">'
+            f'{icon}  {hdr}</div>'
+            f'<div style="color:#cbd5e1;font-size:0.9rem;line-height:1.75;">{para}</div>'
+            f'</div>'
         )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(
+        f'<div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);'
+        f'border-radius:16px;padding:1.8rem 2rem;margin-bottom:0.5rem;">'
+        f'<div style="color:#e2e8f0;font-size:1rem;font-weight:700;'
+        f'margin-bottom:1.2rem;opacity:0.9;">AI-Generated Personalised Feedback</div>'
+        f'{para_html}</div>',
+        unsafe_allow_html=True,
+    )
 
 
 # ════════════════════════════════════════════════════════════════════════════════

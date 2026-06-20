@@ -223,10 +223,30 @@ header           { visibility: hidden !important; }
   border: 1.5px solid #dde1ea !important;
   background: white !important;
   transition: border-color 0.2s ease !important;
+  color: #1e293b !important;
 }
 .stSelectbox > div > div:focus-within {
   border-color: var(--primary) !important;
   box-shadow: 0 0 0 3px rgba(108,99,255,0.12) !important;
+}
+/* Widget labels above form inputs */
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] label {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+/* Main content text elements */
+.main .block-container h1,
+.main .block-container h2,
+.main .block-container h3 {
+  color: #0f172a !important;
+}
+.main .block-container p {
+  color: #334155 !important;
+}
+/* Slider labels */
+[data-testid="stSlider"] [data-testid="stMarkdownContainer"] p {
+  color: #334155 !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -340,6 +360,7 @@ header           { visibility: hidden !important; }
   font-weight: 500 !important;
   font-size: 0.9rem !important;
   background: white !important;
+  color: #334155 !important;
 }
 .stRadio > div > label:has(input:checked) {
   border-color: var(--primary) !important;

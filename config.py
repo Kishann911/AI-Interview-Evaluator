@@ -21,7 +21,7 @@ SCORE_THRESHOLDS = {
     "Poor": 0,
 }
 
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 DOMAIN_ICONS = {
     "Software Engineering": "💻",
